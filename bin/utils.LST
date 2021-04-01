@@ -1,0 +1,32 @@
+C51 COMPILER V9.59.0.0   UTILS                                                             04/01/2021 21:36:11 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE UTILS
+OBJECT MODULE PLACED IN utils.OBJ
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.exe utils.c
+
+line level    source
+
+   1          void sleep(int ms){
+   2   1          int i=60000;
+   3   1          while(--ms){
+   4   2              while(--i);
+   5   2          }
+   6   1      }
+   7          void sleepMin(int ms){
+   8   1          while(--ms);
+   9   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     35    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

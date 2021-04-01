@@ -1,0 +1,76 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/01/2021  21:36:11  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE C:\USERS\TCKXJZC\DOCUMENTS\51PROJECT\LESSON1\LIB\C51S.LIB, LED.OBJ, MAIN.OBJ, STARTUP.OBJ, T
+>> UBE.OBJ, UTILS.OBJ TO MAIN
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  LED.OBJ (LED)
+  MAIN.OBJ (MAIN)
+  STARTUP.OBJ (?C_STARTUP)
+  TUBE.OBJ (TUBE)
+  UTILS.OBJ (UTILS)
+  C:\USERS\TCKXJZC\DOCUMENTS\51PROJECT\LESSON1\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  MAIN (LED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000BH     UNIT         ?DT?TUBE
+            DATA    0013H     0001H     UNIT         ?DT?STARTLED?LED
+            DATA    0014H     0001H     UNIT         ?DT?LOOPSEQSHOW?TUBE
+            DATA    0015H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0016H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0052H     UNIT         ?PR?_OPENLED?TUBE
+            CODE    00E1H     0037H     UNIT         ?PR?STARTTUBE?TUBE
+            CODE    0118H     0027H     UNIT         ?PR?LOOPSEQSHOW?TUBE
+            CODE    013FH     001BH     UNIT         ?PR?STARTLED?LED
+            CODE    015AH     0019H     UNIT         ?PR?_SLEEP?UTILS
+            CODE    0173H     000EH     UNIT         ?C_INITSEG
+            CODE    0181H     000AH     UNIT         ?PR?_SLEEPMIN?UTILS
+            CODE    018BH     0005H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   MAIN (LED)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                  -----    -----
+  +--> ?PR?STARTTUBE?TUBE
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/01/2021  21:36:11  PAGE 2
+
+
+?PR?STARTTUBE?TUBE             0015H    0001H
+  +--> ?PR?_OPENLED?TUBE
+  +--> ?PR?_SLEEPMIN?UTILS
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STARTLED?LED
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LOOPSEQSHOW?TUBE
+
+Program Size: data=23.0 xdata=0 code=400
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)
