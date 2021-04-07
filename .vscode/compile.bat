@@ -8,14 +8,15 @@ echo %1
 echo %2
 echo %3
 cd /D %2
+color 0f
 for %%i in (*.c) do ( 
     echo %%i
     call "%KEIL_BIN_FOLDER%\C51.EXE" %%i 
 )
+color 0a
 for %%i in (*.LST) do ( move %%i "%1\bin" > NUL )
 for %%i in (*.OBJ) do ( move %%i "%1\bin" > NUL )
 call "%KEIL_BIN_FOLDER%\A51.EXE" %3\STARTUP.A51 >NUL
-
 move "%3\STARTUP.OBJ" "%1\bin" > NUL
 move "%3\STARTUP.LST" "%1\bin" > NUL
 cd %1/bin
@@ -31,4 +32,5 @@ call "%KEIL_BIN_FOLDER%\OH51.EXE" "%1\bin\%4"
 
 
 echo Compiled successfully: bin\%4.hex
+color 0f
 exit 0

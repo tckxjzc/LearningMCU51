@@ -12,7 +12,10 @@
         "intrins.h": "c",
         "INTRINS.H": "cpp",
         "REG52.H": "cpp",
-        "utils.h": "c"
+        "utils.h": "c",
+        "tube.h": "c",
+        "binrary.h": "c",
+        "interrupt.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "C_Cpp.clang_format_fallbackStyle": "Visual Studio",

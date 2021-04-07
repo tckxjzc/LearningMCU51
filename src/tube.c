@@ -1,5 +1,6 @@
 #include <REG52.H>
 #include "./utils.h"
+#include "./tube.h"
 // 译码器输入端
 sbit A0 = P2 ^ 2;
 sbit A1 = P2 ^ 3;
@@ -19,6 +20,47 @@ unsigned char table[] = {
     0x6f, //9
     0x77, //a
 };
+
+void loopSeqshow()
+{
+    // 数码管
+    unsigned char loop = 1;
+    openLed(1);
+    while (loop)
+    {
+        P0 = table[loop - 1];
+        sleep(2);
+        loop++;
+        if (!(loop - 11))
+        {
+            loop = 1;
+        }
+    }
+}
+void tubeShowSeq(unsigned char index){
+    P0 = table[index];
+}
+void startTube()
+{
+    unsigned char loop = 1;
+    openLed(1);
+    while (loop)
+    {
+        while (!K1)
+        {
+           return;
+        }
+        openLed(loop);
+        P0 = table[loop - 1];
+        sleepMin(10); // 防抖？
+        P0=0x00; // 消隐
+        loop++;
+        if (!(loop - 9))
+        {
+            loop = 1;
+        }
+    }
+}
 // 通过译码器控制led的开关/位选，打开第seq个数码管
 void openLed(unsigned char seq)
 {
@@ -65,42 +107,5 @@ void openLed(unsigned char seq)
         A1 = 1;
         A2 = 1;
         break;
-    }
-}
-void loopSeqshow()
-{
-    // 数码管
-    unsigned char loop = 1;
-    openLed(1);
-    while (loop)
-    {
-        P0 = table[loop - 1];
-        sleep(2);
-        loop++;
-        if (!(loop - 11))
-        {
-            loop = 1;
-        }
-    }
-}
-void startTube()
-{
-    unsigned char loop = 1;
-    openLed(1);
-    while (loop)
-    {
-        while (!K1)
-        {
-           return;
-        }
-        openLed(loop);
-        P0 = table[loop - 1];
-        sleepMin(10); // 防抖？
-        P0=0x00; // 消隐
-        loop++;
-        if (!(loop - 9))
-        {
-            loop = 1;
-        }
     }
 }
